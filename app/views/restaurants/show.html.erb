@@ -1,0 +1,21 @@
+<div class="container">
+  <h1><%= @restaurant.name %> details:</h1>
+  <ul>
+    <li>Address: <%= @restaurant.address %></li>
+    <li>Phone number: <%= @restaurant.phone_number %></li>
+    <li>Food category: <%= @restaurant.category %></li>
+  </ul>
+  <h2>Reviews:</h2>
+  <%= link_to "Add a review", new_restaurant_review_path(@restaurant) %>
+  <% @reviews.each do |review| %>
+    <p>Rating: <% review.rating.times do %>
+      <i class="glyphicon glyphicon-star"></i>
+      <% end %>
+      <% (5 - review.rating).times do %>
+        <i class="glyphicon glyphicon-star-empty"></i>
+      <% end %>
+    </p>
+    <p>Review: <%= review.content %></p>
+    <hr>
+  <% end %>
+</div>
